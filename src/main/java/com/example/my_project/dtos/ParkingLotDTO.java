@@ -1,2 +1,4 @@
-package com.example.my_project.dtos;public class ParkingLotDTO {
+package com.example.my_project.dtos;
+
+public class ParkingLotDTO {
 }

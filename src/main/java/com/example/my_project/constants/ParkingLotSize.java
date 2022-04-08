@@ -1,2 +1,6 @@
-package com.example.my_project.constants;public enum ParkingLotSize {
+package com.example.my_project.constants;
+
+public enum ParkingLotSize {
+
+    LARGE, MEDIUM, SMALL
 }

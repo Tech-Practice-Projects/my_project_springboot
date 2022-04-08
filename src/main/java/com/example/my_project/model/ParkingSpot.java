@@ -10,12 +10,13 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table
-public class ParkingLot {
+public class ParkingSpot {
 
     @Id
-    private Long lot_id;
-    private Long slotNumberId;
+    private Long spot_id;
+    private String spotName;
+    @Enumerated(EnumType.STRING)
     private ParkingLotSize parkingLotSize;
+    @Enumerated(EnumType.STRING)
     private ParkingStatus parkingStatus;
 }
