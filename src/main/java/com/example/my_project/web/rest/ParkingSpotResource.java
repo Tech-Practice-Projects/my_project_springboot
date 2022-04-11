@@ -25,4 +25,16 @@ public class ParkingSpotResource {
         return parkingSpotService.getSpotByName(spotName);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/{spotName}")
+    public boolean deleteBySpotName(@PathVariable String spotName) {
+        return parkingSpotService.deleteSpotByName(spotName);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping
+    public ParkingSpotDTO updateParkingSpot(@RequestBody ParkingSpotDTO parkingSpotDTO) {
+        return parkingSpotService.updateSpot(parkingSpotDTO);
+    }
+
 }

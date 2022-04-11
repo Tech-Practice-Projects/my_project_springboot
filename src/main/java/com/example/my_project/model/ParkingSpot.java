@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Entity
 public class ParkingSpot extends BaseAudit {
 
+    @Column(unique = true)
     private String spotName;
     @Enumerated(EnumType.STRING)
     private ParkingLotSize parkingLotSize;

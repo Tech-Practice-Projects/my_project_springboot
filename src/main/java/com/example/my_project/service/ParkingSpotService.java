@@ -31,4 +31,20 @@ public class ParkingSpotService {
         ParkingSpot parkingSpot = parkingSpotRepository.findBySpotName(spotName).orElseThrow(() -> new RuntimeException(String.format("Parking spot by name %s Not Found", spotName)));
         return parkingSpotMapper.toParkingSpotDTO(parkingSpot);
     }
+
+    public boolean deleteSpotByName(String spotName) {
+        ParkingSpot parkingSpot = parkingSpotRepository.findBySpotName(spotName).orElseThrow(() -> new RuntimeException(String.format("Parking spot by name %s Not Found", spotName)));
+        parkingSpotRepository.delete(parkingSpot);
+        return true;
+    }
+
+    public ParkingSpotDTO updateSpot(ParkingSpotDTO parkingSpotDTO) {
+        String spotName = parkingSpotDTO.getSpotName();
+        if (spotName == null || spotName.isEmpty()) throw new IllegalStateException("Spot Name is mandatory");
+        ParkingSpot parkingSpot = parkingSpotRepository.findBySpotName(spotName).orElseThrow(() -> new RuntimeException(String.format("Parking spot by name %s Not Found", spotName)));
+        parkingSpot.setParkingStatus(parkingSpotDTO.getParkingStatus());
+        parkingSpot.setParkingLotSize(parkingSpotDTO.getParkingLotSize());
+        parkingSpotRepository.save(parkingSpot);
+        return parkingSpotMapper.toParkingSpotDTO(parkingSpot);
+    }
 }
